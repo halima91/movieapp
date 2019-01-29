@@ -30,3 +30,11 @@
     transform: rotate(360deg);
   }
 }
+.listMovie {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+.itemMovie {
+  width: 50%;
+}
