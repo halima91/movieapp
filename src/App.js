@@ -17,11 +17,11 @@ class App extends Component {
 }
 
 search=(k)=>{
-let filter1 = this.state.new.filter((el,index)=>{return el.title.toLowerCase().startsWith(k)})
+let filter1 = this.state.filtred.filter((el,index)=>{return el.title.toLowerCase().startsWith(k)})
  this.setState({filtred:filter1},()=>{console.log('state updated')})
 }
 searchrate=(x)=>{
-let filter2=this.state.new.filter((el,index)=> {return el.rate==x})
+let filter2=this.state.filtred.filter((el,index)=> {return el.rate==x})
 this.setState({filtred:filter2},()=>{console.log('state updated'+x)})
 // this.setState({valeur:x})
 }
@@ -32,7 +32,7 @@ add=(y)=>{
   render() {
     return (
       <div className="App">
-      <Header searchname={this.search}  addmovie={(y)=>this.add(y)}/>
+      <Header searchname={this.search}  addmovie={this.add}/>
       <Rating searchrate={this.searchrate}/>
       <List news={this.state.filtred}/>
       
