@@ -4,6 +4,7 @@ import './App.css';
 import List from './movie-list'
 import Header from './header'
 import Rating from './rating'
+import Loading from './loader'
 // import Ratingnoedit from './ratingwithoutedit'
 const tab=[
   {image:'http://fr.web.img6.acsta.net/c_150_200/pictures/17/05/23/22/36/599289.jpg',title:'Game of Thrones',type:'Drame,Fantastique',rate:4},
@@ -13,7 +14,7 @@ const tab=[
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { new:tab, filtred:tab}
+    this.state = { new:tab, filtred:tab,isloading:true}
 }
 
 search=(k)=>{
@@ -29,12 +30,18 @@ add=(y)=>{
   // let filter1=this.state.filtred.concat(y)
   this.setState({filtred:this.state.filtred.concat(y)})
 }
+timer=setTimeout(
+ ()=> {this.setState({isloading:false})}
+  ,3000)
+
+
   render() {
     return (
       <div className="App">
       <Header searchname={this.search}  addmovie={this.add}/>
       <Rating searchrate={this.searchrate}/>
-      <List news={this.state.filtred}/>
+      <List isloading={this.state.isloading} news={this.state.filtred}/>
+      
       
         
       </div>
